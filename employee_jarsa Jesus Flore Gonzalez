@@ -1,0 +1,37 @@
+Create Database employee_employee;
+
+use employee_employee;
+
+Create table employee
+(
+  id serial,
+  first_name text,
+  last_name text
+  primary key(id)
+);
+
+CREATE TABLE employee_department
+(
+  id serial,
+  name text,
+  description text
+  employee_id smallint,
+  primary key(id)
+);
+
+INSERT INTO employee(first_name, last_name) values('Hector', 'Enriquez');
+INSERT INTO employee(first_name, last_name) values('Victor', 'Hernandez');
+INSERT INTO employee(first_name, last_name) values('Rocio', 'Ramirez');
+INSERT INTO employee(first_name, last_name) values('Marco', 'Aguilar');
+
+INSERT INTO employee_department (name, description) value('Marketing', 'Management and direction of Marketing');
+INSERT INTO employee_department (name, description) value('Human Resources', 'Management and management of internal human resources');
+INSERT INTO employee_department (name, description) value('Finance', 'Administration of economic resources of the company');
+INSERT INTO employee_department (name, description) value('Sales', 'Administration and direction of operations for sale of products');
+INSERT INTO employee_department (name, description) value('Telemarketing', 'Provide technical support and offer products and services');
+INSERT INTO employee_department (name, description) value('IT systems and technical support', 'Develop information systems and provide technical support');
+
+alter table employee_department
+   add contraint FK_employee_department_employee_id
+   foreign key (employee_id)
+   references employee(id);
